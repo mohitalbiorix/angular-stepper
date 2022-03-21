@@ -1,0 +1,9 @@
+<button mat-raised-button matStepperPrevious class='backToList' (click)='onBackClick()'>BACK TO LIST</button>
+<mat-card-actions>
+    <button mat-raised-button matStepperPrevious  [disabled]="stepperName === 'personalDetail'">BACK</button>
+    <button mat-raised-button matStepperNext class='next' *ngIf="stepperName != 'currentOrganizationDetail'">NEXT</button>
+    <button mat-raised-button matStepperNext class='next' *ngIf="stepperName === 'currentOrganizationDetail'"
+    (click)='addNewEmployee()'>FINISH</button>
+  </mat-card-actions>
+
+  

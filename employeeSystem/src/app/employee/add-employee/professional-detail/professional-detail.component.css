@@ -1,0 +1,19 @@
+.mat-form-field + .mat-form-field {
+    margin: 12px;
+    padding: 15px;
+  }
+
+  h2{
+    font-weight: bold;
+    text-align: center;
+  }
+  .exp{
+      margin-right: 10px;
+      padding: 15px;
+  }
+  
+  .input_fileupload--hidden{
+    display:none;
+  }
+
+  

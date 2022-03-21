@@ -1,0 +1,74 @@
+<div id="personal-detail" [formGroup]="empForm" >
+    <mat-card>
+      <h2>Professional Detail</h2>
+    <div formGroupName="professionalDetailForm">
+        <mat-form-field [style.width.px]=600>
+          <input matInput placeholder="Designation"  formControlName="designation" maxLength='250'>
+          <mat-error *ngIf="f.designation.errors?.required">
+            Designation is required
+          </mat-error>
+        </mat-form-field>
+  
+        <mat-form-field [style.width.px]=600>
+          <input matInput placeholder="Department" formControlName="department" maxLength='250'>
+          <mat-error *ngIf="f.department.errors?.required">
+            Department is required
+          </mat-error>
+        </mat-form-field>
+          
+    </div>
+    <div formGroupName="professionalDetailForm">
+          <label class='exp'>Experience :</label>
+        <mat-form-field [style.width.px]=200>
+            <label class='exp'>Years</label>
+            <mat-select formControlName="experienceInYear">
+            <mat-option *ngFor="let item of experienceYears" [value]="item.id">
+                  {{item.name}}
+                </mat-option>
+            </mat-select>
+          <mat-error *ngIf="f.experienceInYear.errors?.required">
+            Experience in years  is required
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field [style.width.px]=200>
+            <label class='exp'>Months</label>
+            <mat-select  formControlName="experienceInMonth">
+            <mat-option *ngFor="let item of experienceMonths" [value]="item.id">
+                  {{item.name}}
+                </mat-option>
+            </mat-select>
+          <mat-error *ngIf="f.experienceInMonth.errors?.required">
+            Experience in month is required
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field [style.width.px]=650>
+            <input matInput placeholder="Current Location" formControlName="currentLocation" maxLength='250'>
+          <mat-error *ngIf="f.currentLocation.errors?.required">
+            Current Location  is required
+          </mat-error>
+        </mat-form-field>
+          
+    </div>
+
+    <div formGroupName="professionalDetailForm">
+        <mat-form-field [style.width.px]=600>
+        <label class='exp'>Skills</label>
+        <mat-select formControlName="skills">
+            <mat-option *ngFor="let item of skills" [value]="item.id">
+                  {{item.name}}
+                </mat-option>
+        </mat-select>
+          <mat-error *ngIf="f.skills.errors?.required">
+            Skills is required
+          </mat-error>
+        </mat-form-field>
+
+        <input class='inputFile'   #resumeInput type="file"  formControlName="resume" accept="application/pdf, application/vnd.ms-excel" />
+        <mat-error *ngIf="f.resume.errors?.invalid">Invalid File</mat-error>
+        
+      
+    </div>
+    </mat-card>
+  </div>

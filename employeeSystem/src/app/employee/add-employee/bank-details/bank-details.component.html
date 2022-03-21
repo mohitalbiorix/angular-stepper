@@ -1,0 +1,74 @@
+<div id="personal-detail" [formGroup]="empForm">
+  <mat-card>
+    <h2>Bank Detail</h2>
+    <div formGroupName="bankDetailForm">
+      <mat-form-field [style.width.px]=600>
+        <input matInput placeholder="Bank Name" formControlName="bankName" [maxLength]='50'>
+        <mat-error *ngIf="f.bankName.errors?.required">
+          Bank Name is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field [style.width.px]=600>
+        <input matInput placeholder="Account Name" formControlName="accountName" [maxLength]='50'>
+        <mat-error *ngIf="f.accountName.errors?.required">
+          Account Name is required
+        </mat-error>
+      </mat-form-field>
+
+    </div>
+    <div formGroupName="bankDetailForm">
+      <mat-form-field [style.width.px]=600>
+        <input matInput placeholder="Bank Account Number" formControlName="accountNumber" appOnlyNumeric
+        [maxLength]='12' >
+        <mat-error *ngIf="f.accountNumber.errors?.required">
+          Account Number is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field [style.width.px]=600>
+        <input matInput placeholder="IFSC Code" [maxLength]='11' formControlName="ifscCode" pattern="^[A-Za-z]{4}0[A-Z0-9a-z]{6}$">
+        <mat-error *ngIf="f.ifscCode.errors?.required">
+          IFSC Code is required
+        </mat-error>
+        <mat-error *ngIf="f.ifscCode.errors?.pattern">
+          Invalid IFSC
+        </mat-error>
+      </mat-form-field>
+
+    </div>
+    <div formGroupName="bankDetailForm">
+      <mat-form-field [style.width.px]=600>
+        <input matInput placeholder="Aadhaar Card Number" formControlName="aadharCardNumber"
+          pattern="^[0-9]{4}[ -]?[0-9]{4}[ -]?[0-9]{4}$"
+          [maxLength]='12'
+          appOnlyNumeric
+          >
+        <mat-error *ngIf="f.aadharCardNumber.errors?.required">
+          Aadhar Card Number is required
+        </mat-error>
+        <mat-error *ngIf="f.aadharCardNumber.errors?.pattern">
+          Aadhar Card Number is Invalid
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field [style.width.px]=600>
+        <input matInput placeholder="PAN CARD Number" formControlName="panCardNumber"
+        [maxLength]='10'
+          pattern="^[A-Za-z]{5}[0-9]{4}[A-Za-z]$">
+        <mat-error *ngIf="f.panCardNumber.errors?.required">
+          PAN Card Number is required
+        </mat-error>
+        <mat-error *ngIf="f.panCardNumber.errors?.pattern">
+          PAN Card Number is Invalid
+        </mat-error>
+      </mat-form-field>
+
+    </div>
+
+  </mat-card>
+
+  <!-- <app-stapper-footer 
+  [action] = "action"
+  [empForm] = "empForm"></app-stapper-footer> -->
+</div>

@@ -1,0 +1,48 @@
+<div id="education-detail" [formGroup]="empForm">
+  <h2>Experience Detail </h2>
+  <button mat-raised-button color="accent" class='addExperience' (click)="addExperience()"
+  [disabled]="isButtonDisable === true"
+  >
+  <mat-icon>add</mat-icon> ADD EXPERIENCE</button>
+   <mat-card>
+      <div formGroupName="experienceDetailForm">
+          <div formArrayName="experienceDetail">
+              <div class="set-div"
+                  *ngFor="let item of empForm.get('experienceDetailForm').get('experienceDetail').controls; let i=index"
+                  [formGroupName]="i">
+
+                  <mat-form-field [style.width.px]=320>
+                      <input matInput placeholder="Company Name" formControlName="companyName"  [readonly]="readOnly"  >
+                      <mat-error *ngIf="f?.controls[i].controls?.companyName.errors?.required">
+                          Company Name is required
+                      </mat-error>
+                  </mat-form-field>
+
+                  <mat-form-field [style.width.px]=320>
+                      <input matInput placeholder="Position" formControlName="position"  [readonly]="readOnly" >
+                      <mat-error *ngIf="f?.controls[i].controls?.position.errors?.required">
+                          Position is required
+                      </mat-error>
+                  </mat-form-field>
+
+                  <mat-form-field [style.width.px]=320>
+                      <input matInput placeholder="Total Year" formControlName="totalYear" appOnlyNumeric  [readonly]="readOnly" >
+                      <mat-error *ngIf="f?.controls[i].controls?.totalYear.errors?.required">
+                          Total Year  is required
+                      </mat-error>
+                    </mat-form-field>
+                  
+                  <mat-form-field [style.width.px]=320>
+                      <input matInput placeholder="Last Ctc" formControlName="lastCTC"  [readonly]="readOnly"  >
+                      <mat-error *ngIf="f?.controls[i].controls?.lastCTC.errors?.required">
+                          Last CTC  is required
+                      </mat-error>
+                  </mat-form-field>
+
+                  <mat-icon class='save-icon' (click)='submitExperienceDetail(i)'>save</mat-icon>
+                  <mat-icon class='edit-icon' (click)='editExperienceDetail(i)'>create</mat-icon>
+                  <mat-icon class='delete-icon' (click)="deleteExperienceDetail()">delete</mat-icon>
+              </div>
+          </div>
+      </div>
+  </mat-card>

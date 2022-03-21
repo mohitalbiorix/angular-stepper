@@ -1,0 +1,43 @@
+table {
+    width: 100%;
+    box-sizing: border-box;
+    text-indent: initial;
+    border-color: grey;
+    padding: 20%;
+  }
+
+  .edit-icon{
+      color:#0275d8;
+      font-size: 28px;
+  }
+
+  .delete-icon{
+    color: 	#e83e8c;
+    font-size: 28px;
+  }
+
+  h1{
+    display: block;
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  button{
+      float: right;
+      margin: 10px;
+  }
+
+  div {
+    display: block; 
+}
+
+th{
+  font-size: large;
+  font-weight: 500;
+  color: black;
+}

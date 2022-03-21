@@ -1,0 +1,42 @@
+.set-div{
+    padding: 10px;
+}
+.addEducation{
+    float: right;
+    margin-bottom: 20px;
+}
+h2{
+    font-weight: bold;
+    text-align: center;
+  }
+.mat-card{
+    width: 100%;
+    margin-top: 70px;
+}
+
+.edit-icon{
+    color:#0275d8;
+    font-size: 28px;
+    margin-right: 20px;
+}
+
+.delete-icon{
+  color : red;
+  font-size: 28px;
+  margin-right: 20px;
+}
+.create-icon{
+    color : red;
+    font-size: 28px;
+    margin-right: 20px;
+}
+
+.save-icon{
+    color:#0275d8;
+    font-size: 28px;
+    margin-right: 20px; 
+}
+
+.mat-form-field{
+    padding: 10px;
+}

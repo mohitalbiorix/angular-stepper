@@ -1,0 +1,49 @@
+<div id="education-detail" [formGroup]="empForm">
+    <h2>Education Detail</h2>
+    <button mat-raised-button color="accent" class='addEducation' (click)="addEducation()"
+    [disabled]="isButtonDisable === true"
+    >
+    <mat-icon>add</mat-icon> ADD EDUCATION</button>
+     <mat-card>
+        <div formGroupName="educationDetailForm">
+            <div formArrayName="educationDetail">
+                <div class="set-div"
+                    *ngFor="let item of empForm.get('educationDetailForm').get('educationDetail').controls; let i=index"
+                    [formGroupName]="i">
+
+                    <mat-form-field [style.width.px]=320>
+                        <input matInput placeholder="Education Name" formControlName="educationName"  [readonly]="readOnly" >
+                        <mat-error *ngIf="f?.controls[i].controls?.educationName.errors?.required">
+                            Education Name is required
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field [style.width.px]=320>
+                        <input matInput placeholder="University" formControlName="university"  [readonly]="readOnly">
+                        <mat-error *ngIf="f?.controls[i].controls?.university.errors?.required">
+                            University is required
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field [style.width.px]=320>
+                        <input matInput placeholder="Result" formControlName="result" [readonly]="readOnly">
+                        <mat-error *ngIf="f?.controls[i].controls?.result.errors?.required">
+                            Result  is required
+                        </mat-error>
+                      </mat-form-field>
+                    
+                    <mat-form-field [style.width.px]=320>
+                        <input matInput placeholder="Year Of Passing" formControlName="passedOn" appOnlyNumeric [readonly]="readOnly">
+                        <mat-error *ngIf="f?.controls[i].controls?.passedOn.errors?.required">
+                            Year Of Passing  is required
+                        </mat-error>
+                    </mat-form-field>
+
+                    <mat-icon class='save-icon' (click)='submitEducationDetail(i)'>save</mat-icon>
+                    <mat-icon class='edit-icon' (click)='editEducationDetail(i)'>create</mat-icon>
+                    <mat-icon class='delete-icon' (click)="deleteEducationDetail(i)">delete</mat-icon>
+                </div>
+            </div>
+        </div>
+    </mat-card>
+</div>

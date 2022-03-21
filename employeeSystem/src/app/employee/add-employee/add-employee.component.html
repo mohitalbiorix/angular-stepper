@@ -1,0 +1,68 @@
+<div id="employee">
+    <form id="empForm" [formGroup] = "employeeForm">
+        <mat-horizontal-stepper [linear]="true" #stepper>
+			<mat-step formGroupName = "personalDetailForm" [stepControl]="employeeForm.controls['personalDetailForm']">
+				<ng-template matStepLabel>Personal Detail</ng-template>
+				<app-personal-detail [empForm] = "employeeForm"
+				[action] = "action"
+				[empId] = "empId"></app-personal-detail>
+				<app-stapper-footer 
+					[stepperName]="'personalDetail'"
+					[empForm] = "employeeForm"
+				></app-stapper-footer>
+			</mat-step>
+            <mat-step formGroupName = "bankDetailForm" [stepControl]="employeeForm.controls['bankDetailForm']">
+				<ng-template matStepLabel>Bank Detail</ng-template>
+				<app-bank-details [empForm] = "employeeForm"
+				[action] = "action"
+				[empId] = "empId"></app-bank-details>
+				<app-stapper-footer
+				[stepperName]="'bankDetail'"
+				[empForm] = "employeeForm"
+				></app-stapper-footer>
+			</mat-step>
+			<mat-step formGroupName = "professionalDetailForm"  [stepControl]="employeeForm.controls['professionalDetailForm']">
+				<ng-template matStepLabel>Professional Detail</ng-template>
+				<app-professional-detail [empForm] = "employeeForm"
+				[action] = "action"
+				[empId] = "empId"></app-professional-detail>
+				<app-stapper-footer
+				[stepperName]="'professionalDetail'"
+				[empForm] = "employeeForm"
+				></app-stapper-footer>
+			</mat-step>
+			<mat-step formGroupName = "educationDetailForm" [stepControl]="employeeForm.controls['educationDetailForm']">
+				<ng-template matStepLabel>Education Detail</ng-template>
+				<app-education-detail [empForm] = "employeeForm"
+				(addEducationDetail) = "addEducationDetail()"
+				(removeEducationDetail) = "removeEducationDetail($event)"
+				[action] = "action"
+				[empId] = "empId"></app-education-detail>
+				<app-stapper-footer
+				[stepperName]= "'educationDetail'"
+				[empForm] = "employeeForm"
+				></app-stapper-footer>
+			</mat-step>
+			<mat-step formGroupName = "experienceDetailForm" [stepControl]="employeeForm.controls['experienceDetailForm']">
+				<ng-template matStepLabel>Experience Detail</ng-template>
+				<app-experience-details [empForm] = "employeeForm"
+				(addExperienceDetail) = "addExperienceDetail()"
+				(removeExperienceDetail) = "removeExperienceDetail($event)"></app-experience-details>
+				<app-stapper-footer
+				[stepperName]="'experienceDetail'"
+				[empForm] = "employeeForm"></app-stapper-footer>
+			</mat-step>
+			<mat-step formGroupName = "currentOrganizationDetailForm"  [stepControl]="employeeForm.controls['currentOrganizationDetailForm']" >
+				<ng-template matStepLabel>Current Organization Detail</ng-template>
+				<app-current-organization-detail [empForm] = "employeeForm"></app-current-organization-detail>
+				<app-stapper-footer
+				[stepperName]="'currentOrganizationDetail'"
+				[empForm] = "employeeForm"
+				></app-stapper-footer>
+			</mat-step>
+        </mat-horizontal-stepper>
+    </form>
+</div>
+
+
+

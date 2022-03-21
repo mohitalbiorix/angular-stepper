@@ -1,0 +1,24 @@
+.mat-card-actions {
+    margin-left: 4px;
+    margin-right: 0px;
+    margin-top: 20px;
+    padding: 8px 0;
+    float: right;
+}
+
+.next{
+    background-color: #3700B3;
+    color: white;
+}
+.backToList{
+    margin-left: 4px;
+    margin-right: 0px;
+    margin-top: 20px;
+    background-color: #3700B3;
+    color: white;
+    float: right;
+    float: left;
+}
+button{
+    padding: 5px;
+}

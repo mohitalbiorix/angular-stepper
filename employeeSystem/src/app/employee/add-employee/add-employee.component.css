@@ -1,0 +1,20 @@
+.back {
+    float: right;
+    padding: 5px;
+    margin-left: 4px;
+    margin-right: 0px;
+    margin-top: 20px;
+    background-color: #3700B3;
+    color: white;
+}
+
+.next {
+    float: right;
+    padding: 5px;
+    margin-left: 4px;
+    margin-right: 0px;
+    margin-top: 20px;
+    background-color: #3700B3;
+    color: white;
+}
+

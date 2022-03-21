@@ -1,0 +1,45 @@
+<div id="personal-detail" [formGroup]="empForm" >
+    <mat-card>
+      <h2>Current Organization Detail</h2>
+      <div formGroupName="currentOrganizationDetailForm">
+
+        <mat-form-field  [style.width.px]=450>
+          <mat-label>Joining Date</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="joiningDate" >
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker touchUi #picker></mat-datepicker>
+          <mat-error *ngIf="f.joiningDate.errors?.required">
+            Date Of Joining is required
+          </mat-error>
+        </mat-form-field>
+        
+        <mat-form-field [style.width.px]=450>
+          <mat-label>Next Appraisal Date </mat-label>
+          <input matInput [matDatepicker]="picker2" formControlName="appraisalDate" >
+          <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+          <mat-datepicker touchUi #picker2></mat-datepicker>
+          <mat-error *ngIf="f.appraisalDate.errors?.required">
+            Next Appraisal Date is required
+          </mat-error>
+        </mat-form-field>
+
+      </div>
+      <div formGroupName="currentOrganizationDetailForm">
+        <mat-form-field [style.width.px]=450>
+          <input matInput placeholder="Current CTC" class='perAddress'  formControlName="currentCTC">
+          <mat-error *ngIf="f.currentCTC.errors?.required">
+            Current CTC is required
+          </mat-error>
+        </mat-form-field>
+
+      </div>
+  
+  
+    </mat-card>
+  
+    <!-- <app-stapper-footer
+    [action] = "action"
+    [empForm] = "empForm"></app-stapper-footer> -->
+  
+    
+  </div>
