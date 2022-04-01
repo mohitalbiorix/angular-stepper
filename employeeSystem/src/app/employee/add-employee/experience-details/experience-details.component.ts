@@ -1,5 +1,6 @@
 import { Component, OnInit , EventEmitter, Output, Input} from '@angular/core';
-import { FormArray, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
+import { EmployeeService } from '../../services/employee.service';
 
 @Component({
   selector: 'app-experience-details',
@@ -8,15 +9,23 @@ import { FormArray, FormGroup } from '@angular/forms';
 })
 export class ExperienceDetailsComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private employeeSvc : EmployeeService,
+    private formBuilder : FormBuilder,
+  ) { }
   @Input('empForm') empForm : any
   @Output('addExperienceDetail') addExperienceDetail = new EventEmitter();
   @Output("removeExperienceDetail") removeExperienceDetail = new EventEmitter();
   isButtonDisable = false;
-  action = 'EXPERIENCE_DETAIL'
   readOnly = false;
+  employeeData : any;
+  @Input() action : any;
 
   ngOnInit(): void {
+    this.employeeData = this.employeeSvc.getEmployeeData();
+    if(this.action === 'EDIT'){
+      this.setExperienceDetails();
+    }
   }
 
 
@@ -33,6 +42,25 @@ export class ExperienceDetailsComponent implements OnInit {
   submitExperienceDetail(i : any){
     this.isButtonDisable = false;
     this.setDisableForm(i)
+  }
+
+  get experienceDetail() : FormArray {
+    return this.empForm.get('experienceDetailForm')?.get('experienceDetail') as FormArray
+  }
+
+
+  setExperienceDetails(){
+   const experienceData = this.employeeData[0].experienceDetailForm.experienceDetail;
+   for(let index =0;index < experienceData.length ;index++){
+    this.experienceDetail.push(
+      this.formBuilder.group({
+        companyName : [experienceData[index].companyName],
+        lastCTC: [experienceData[index].lastCTC],
+        position : [experienceData[index].position],
+        totalYear: [experienceData[index].totalYear],
+      })
+    )
+  }
   }
 
   setDisableForm(index : any){

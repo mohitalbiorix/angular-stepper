@@ -16,6 +16,7 @@ export class StapperFooterComponent implements OnInit {
 
   @Input() stepperName : any
   @Input() empForm : any
+  @Input() action : any
 
   ngOnInit(): void {
   }
@@ -26,9 +27,14 @@ export class StapperFooterComponent implements OnInit {
   }
 
   addNewEmployee(){
-    if(this.empForm.status != 'INVALID'){
-      const employeeFormValue = this.empForm.value
-      this.employeeSvc.addEmployee(employeeFormValue)
+    if(this.action === 'ADD'){
+      if(this.empForm.status != 'INVALID'){
+        const employeeFormValue = this.empForm.value
+        this.employeeSvc.addEmployee(employeeFormValue)
+      }
+    }
+    if(this.action === 'EDIT'){
+      
     }
   }
 

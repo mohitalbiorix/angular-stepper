@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, Output , EventEmitter } from '@angular/core';
-import { FormArray, FormGroup } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { EmployeeService } from '../../services/employee.service';
 
 
@@ -11,7 +11,8 @@ import { EmployeeService } from '../../services/employee.service';
 export class EducationDetailComponent implements OnInit {
 
   constructor(
-    private employeeSvc : EmployeeService
+    private employeeSvc : EmployeeService,
+    private formBuilder : FormBuilder,
   ) { }
 
   @Input() empForm : any 
@@ -35,6 +36,10 @@ export class EducationDetailComponent implements OnInit {
     return this.empForm.controls.educationDetailForm.controls.educationDetail;
   }
 
+  get educationDetail(): FormArray {
+    return this.empForm.get('educationDetailForm')?.get('educationDetail') as FormArray
+  }
+
   addEducation(){
     this.addEducationDetail.emit();
     this.isButtonDisable = true;
@@ -43,9 +48,21 @@ export class EducationDetailComponent implements OnInit {
 
 
   setEducationDetails(){
-   
+    const educationData = this.employeeData[0].educationDetailForm.educationDetail;
+    for(let index =0;index < educationData.length ;index++){
+      this.educationDetail.push(
+        this.formBuilder.group({
+          educationName : [educationData[index].educationName],
+          university: [educationData[index].university],
+          result : [educationData[index].result],
+          passedOn: [educationData[index].passedOn],
+        })
+      )
+    }
   }
 
+  editEdcutaionDetail(){
+  }
 
   submitEducationDetail(i : any){
     this.isButtonDisable = false;

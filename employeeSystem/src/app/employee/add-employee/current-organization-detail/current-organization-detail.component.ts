@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { EmployeeService } from '../../services/employee.service';
 
 @Component({
   selector: 'app-current-organization-detail',
@@ -7,12 +8,27 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class CurrentOrganizationDetailComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private employeeSvc : EmployeeService
+  ) { }
 
   @Input() empForm : any 
-  action = 'CURRENT_ORGANIZATION_DETAIL'
+  @Input() action : any
+  @Input() empId : any
+  employeeData : any
 
   ngOnInit(): void {
+    this.employeeData = this.employeeSvc.getEmployeeData();
+    if(this.action ==='EDIT'){
+      this.setCurrentOrganizationDetail();
+    }
+  }
+
+  setCurrentOrganizationDetail(){
+    this.empForm.get('currentOrganizationDetailForm').get('joiningDate').setValue(this.employeeData[this.empId].currentOrganizationDetailForm.joiningDate)
+    this.empForm.get('currentOrganizationDetailForm').get('appraisalDate').setValue(this.employeeData[this.empId].currentOrganizationDetailForm.appraisalDate)
+    this.empForm.get('currentOrganizationDetailForm').get('currentCTC').setValue(this.employeeData[this.empId].currentOrganizationDetailForm.currentCTC)
+ 
   }
 
   get f() {
